@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import MailList from './components/MailList';
 import MailDetail from './components/MailDetail';
 import ComposeMail from './components/ComposeMail';
+import ThemeSwitcher from './components/ThemeSwitcher'; // Import nowego komponentu
 import './App.css'; 
 
 const fakeMails = {
@@ -22,6 +23,20 @@ function App() {
   const [activeFolder, setActiveFolder] = useState('inbox');
   const [selectedMailId, setSelectedMailId] = useState(null);
   const [isComposing, setIsComposing] = useState(false);
+  
+  // NOWOŚĆ: Stan i logika do zarządzania motywem
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+
+  useEffect(() => {
+    document.body.className = '';
+    document.body.classList.add(`${theme}-theme`);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  };
+  // Koniec logiki motywu
 
   useEffect(() => {
     setLoading(true);
@@ -44,6 +59,8 @@ function App() {
       <header className="app-header">
         <div className="app-header-content">
           <h1 className="app-title">NeuraMail</h1>
+          {/* NOWOŚĆ: Dodanie przełącznika motywu */}
+          <ThemeSwitcher theme={theme} onToggle={toggleTheme} />
         </div>
       </header>
       <div className="app-content">

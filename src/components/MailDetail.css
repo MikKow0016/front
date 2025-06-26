@@ -1,10 +1,25 @@
 /* src/components/MailDetail.css */
+
+/* --- NOWA ANIMACJA --- */
+@keyframes fadeInScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .mail-detail-card {
   padding: 32px;
   display: flex;
   flex-direction: column;
   width: 100%;
   min-height: 100%;
+  /* Zastosowanie animacji */
+  animation: fadeInScaleUp 0.3s ease-in-out forwards;
 }
 .mail-detail-card .glass-card-content {
   position: relative;
@@ -21,7 +36,7 @@
   background: transparent;
   color: var(--text-secondary);
   font-weight: 600;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--glass-border-color);
   border-radius: 12px;
   cursor: pointer;
   font-size: 0.9em;
@@ -34,6 +49,10 @@
   color: var(--text-primary);
   border-color: rgba(0,0,0,0.15);
   background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+.back-button:active {
+  transform: translateY(-1px) scale(0.98);
 }
 .detail-subject {
   font-size: 1.75em;
@@ -56,7 +75,7 @@
 }
 .detail-divider {
   border: none;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--glass-border-color);
   margin: 0 0 24px 0;
   flex-shrink: 0;
 }

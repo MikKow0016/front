@@ -19,6 +19,12 @@
   top: 0;
   left: 0;
   right: 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-theme .app-header {
+  background: rgba(13, 17, 23, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .app-header-content {
@@ -26,6 +32,7 @@
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between; /* ZMIANA: Aby rozsunąć tytuł i przełącznik */
   padding: 0 24px;
 }
 
@@ -41,47 +48,47 @@
   padding: 0;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .main-content {
   margin-left: calc(260px + 24px);
   padding: 24px;
   width: auto;
+  animation: fadeInUp 0.5s ease-in-out forwards;
 }
 
-/* --- GLOBALNA KLASA "GLASS CARD" --- */
 .glass-card {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border-radius: var(--glass-radius);
-  border: 1px solid var(--glass-border-color);
-  box-shadow: var(--shadow),
-    inset 0 1px 0 var(--glass-highlight-soft),
-    inset 0 0 20px 10px var(--glass-inner-glow-color);
+  
+  /* ZMIANA: Korzystanie ze zmiennych dla borderów */
+  border: 2px solid var(--border-strong);
+  box-shadow: 
+    inset 0 0 0 1px var(--border-strong-inset),
+    var(--shadow);
+
   position: relative;
   overflow: hidden;
+  will-change: transform, opacity;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Refleksy na krawędziach */
-.glass-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--glass-highlight-sharp), transparent);
-}
+.glass-card::before,
 .glass-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--glass-highlight-sharp), transparent, rgba(255, 255, 255, 0.3));
+  display: none;
 }
 
-/* --- SIDEBAR --- */
 .sidebar {
   width: 260px;
   position: fixed;
@@ -89,4 +96,6 @@
   left: 24px;
   height: calc(100vh - 88px - 24px);
   padding: 24px 16px;
+  animation: fadeInUp 0.5s ease-in-out 0.1s forwards;
+  opacity: 0;
 }

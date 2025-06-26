@@ -2,16 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* ZMIANA: Zmienne dla nowego, zaawansowanego efektu szkła */
-  --glass-bg: rgba(255, 255, 255, 0.15);
-  --glass-border-color: rgba(255, 255, 255, 0.3);
-  --glass-blur: 40px;
-  --glass-radius: 20px;
-  --glass-highlight-soft: rgba(255, 255, 255, 0.5);
-  --glass-highlight-sharp: rgba(255, 255, 255, 0.8);
-  --glass-inner-glow-color: rgba(255, 255, 255, 1);
-
-  /* Paleta kolorów dostosowana do nowego wyglądu */
+  /* Paleta kolorów - MOTYW JASNY */
   --bg-color: #f0f2f5;
   --primary-accent: #1e40af;
   --primary-accent-hover: #1d4ed8;
@@ -19,19 +10,30 @@
   --text-primary: #1a202c;
   --text-secondary: #4a5568;
   --text-tertiary: #718096;
-  
   --font-sans: 'Inter', sans-serif;
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --border-strong: rgba(255, 255, 255, 0.5);
+  --border-strong-inset: rgba(255, 255, 255, 0.8);
+}
+
+/* NOWOŚĆ: Zmienne dla motywu ciemnego */
+body.dark-theme {
+  --bg-color: #0d1117;
+  --primary-accent: #3b82f6;
+  --primary-accent-hover: #60a5fa;
+  --primary-accent-text: #ffffff;
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --glass-bg: rgba(31, 41, 55, 0.25);
+  --border-strong: rgba(255, 255, 255, 0.1);
+  --border-strong-inset: rgba(255, 255, 255, 0.2);
 }
 
 * {
   box-sizing: border-box;
-}
-
-@keyframes animated-gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 body {
@@ -42,12 +44,9 @@ body {
   font-weight: 500;
   color: var(--text-primary);
   background-color: var(--bg-color);
-  background-image: linear-gradient(125deg, #f3e8ff, #e0f2fe, #fef3c7, #fee2e2);
-  background-size: 300% 300%;
-  animation: animated-gradient 18s ease infinite;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
