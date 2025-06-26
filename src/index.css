@@ -17,7 +17,6 @@
   --border-strong-inset: rgba(255, 255, 255, 0.8);
 }
 
-/* NOWOŚĆ: Zmienne dla motywu ciemnego */
 body.dark-theme {
   --bg-color: #0d1117;
   --primary-accent: #3b82f6;
@@ -43,6 +42,7 @@ body {
   line-height: 1.6;
   font-weight: 500;
   color: var(--text-primary);
+  /* POPRAWKA: Przywracamy tło, aby zapewnić widoczność aplikacji */
   background-color: var(--bg-color);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
