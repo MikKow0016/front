@@ -1,4 +1,9 @@
 /* src/components/Sidebar.css */
+.glass-card-content {
+  position: relative;
+  z-index: 2;
+}
+
 .compose-button {
   display: flex;
   align-items: center;
@@ -14,24 +19,19 @@
   border-radius: 12px;
   cursor: pointer;
   margin-bottom: 32px;
-  /* ZMIANA: Cień dopasowany do nowego, niebieskiego koloru */
   box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
   transition: all 0.2s ease-in-out;
 }
-
 .compose-button:hover {
   background: var(--primary-accent-hover);
-  /* ZMIANA: Cień dopasowany do nowego, niebieskiego koloru */
   box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5);
   transform: translateY(-2px);
 }
-
 .sidebar-nav {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-
 .nav-item {
   padding: 10px 16px;
   color: var(--text-secondary);
@@ -40,14 +40,11 @@
   font-weight: 500;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-
 .nav-item:hover {
   background-color: rgba(0, 0, 0, 0.04);
   color: var(--text-primary);
 }
-
 .nav-item.active {
-  /* ZMIANA: Aktywny element również używa teraz niebieskiego */
   background-color: rgba(30, 64, 175, 0.1);
   color: var(--primary-accent-hover);
   font-weight: 600;
