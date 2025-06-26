@@ -1,0 +1,76 @@
+/* src/components/MailDetail.css */
+.mail-detail-card {
+  /* ZMIANA: Te właściwości zapewniają, że karta wypełnia całą przestrzeń */
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--surface-color);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 32px;
+  align-self: flex-start;
+  flex-shrink: 0; /* Zapobiega kurczeniu się przycisku */
+}
+
+.back-button:hover {
+  color: var(--text-primary);
+  border-color: rgba(0,0,0,0.15);
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.detail-subject {
+  font-size: 1.75em;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.detail-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.detail-sender span {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.detail-divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 0 0 24px 0;
+  flex-shrink: 0;
+}
+
+.detail-body-content {
+  font-size: 1.05em;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  overflow-y: auto; /* Dodajemy scrollowanie, jeśli treść jest długa */
+}

@@ -1,0 +1,54 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Paleta kolorów z nowym, ciemniejszym akcentem */
+  --bg-color: #f7f8fc;
+  --surface-color: rgba(255, 255, 255, 0.45);
+  --surface-color-hover: rgba(255, 255, 255, 0.7);
+  
+  /* ZMIANA: Ciemnoniebieski jako nowy kolor akcentu */
+  --primary-accent: #1e40af; /* Ciemny, głęboki niebieski */
+  --primary-accent-hover: #1d4ed8; /* Nieco jaśniejszy wariant na hover */
+  --primary-accent-text: #ffffff; /* Tekst na przyciskach pozostaje biały */
+  
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-tertiary: #718096;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --font-sans: 'Inter', sans-serif;
+  --radius: 16px;
+  --shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  --blur: 20px;
+}
+
+@keyframes animated-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  font-weight: 500;
+  color: var(--text-primary);
+  background-color: var(--bg-color);
+  background-image: linear-gradient(
+    125deg,
+    #f3e8ff,
+    #e0f2fe,
+    #fef3c7,
+    #fee2e2
+  );
+  background-size: 300% 300%;
+  animation: animated-gradient 18s ease infinite;
+
+  transition: background-color 0.3s ease;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
