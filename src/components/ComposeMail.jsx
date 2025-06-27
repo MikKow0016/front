@@ -1,5 +1,6 @@
 // src/components/ComposeMail.jsx
 import React from 'react';
+import ReactDOM from 'react-dom'; // Upewnij się, że ten import istnieje
 import './ComposeMail.css';
 
 function ComposeMail({ onClose }) {
@@ -9,8 +10,7 @@ function ComposeMail({ onClose }) {
     </svg>
   );
 
-  return (
-    // ZMIANA: Usunęliśmy zewnętrzny kontener. Sama karta jest teraz głównym elementem.
+  return ReactDOM.createPortal(
     <div className="compose-mail-card glass-card">
       <div className="compose-content-wrapper">
         <header className="compose-header">
@@ -39,7 +39,8 @@ function ComposeMail({ onClose }) {
           </div>
         </form>
       </div>
-    </div>
+    </div>,
+    document.getElementById('compose-portal')
   );
 }
 

@@ -11,7 +11,7 @@
 }
 
 .compose-mail-card {
-  /* ZMIANA: Kluczowe style pozycjonowania */
+  /* Kluczowe style pozycjonowania - odnoszą się do okna przeglądarki */
   position: fixed;
   bottom: 24px;
   right: 24px;
