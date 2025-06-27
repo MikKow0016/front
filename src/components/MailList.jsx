@@ -1,11 +1,9 @@
 // src/components/MailList.jsx
-import React from 'react'; // Usunięto 'useState', ponieważ nie jest już potrzebny
+import React from 'react';
 import MailItem from './MailItem';
 import './MailList.css';
 
 function MailList({ mails, loading, onMailSelect, activeFolder }) {
-  // Usunięto stan 'inboxViewMode', który nie jest już używany
-  // const [inboxViewMode, setInboxViewMode] = useState('standard');
 
   const getMailListHeading = () => {
     const folderNames = {
@@ -15,14 +13,15 @@ function MailList({ mails, loading, onMailSelect, activeFolder }) {
   };
 
   return (
-    <div className="mail-list-card aurora-glass">
+    // ZMIANA: Przywracamy wygląd pojedynczej karty dla całej listy.
+    <div className="mail-list-card glass-card">
       <div className="mail-list-content">
-        {/* Usunięto cały blok z przyciskami 'Główna skrzynka' i 'AI Sortowane' */}
         <h2 className="mail-list-heading">{getMailListHeading()}</h2>
+        
         {loading ? (
           <div className="status-box"><p>Ładowanie maili...</p></div>
         ) : mails.length > 0 ? (
-          <div className="mails-grid">
+          <div className="mails-grid"> 
             {mails.map((mail) => (
               <MailItem key={mail.id} mail={mail} onSelectMail={onMailSelect} />
             ))}

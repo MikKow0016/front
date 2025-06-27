@@ -1,28 +1,33 @@
 /* src/components/MailList.css */
 .mail-list-card {
+  /* ZMIANA: Zapewniamy, że karta wypełnia przestrzeń i ma padding */
   padding: 24px;
   display: flex;
   flex-direction: column;
 }
-.mail-list-card .glass-card-content {
+
+.mail-list-card .mail-list-content {
   position: relative;
   z-index: 2;
 }
+
 .mail-list-heading {
   font-size: 1.5em;
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 24px;
 }
+
 .mails-grid {
   display: grid;
-  /* ZMIANA: Zwiększamy odstęp do 12px */
-  gap: 12px; 
-  /* USUNIĘTO: Usuwamy obramowanie i tło siatki */
-  /* border: 1px solid var(--glass-border-color); */
-  /* background-color: var(--glass-border-color); */
-  overflow: visible; /* Zmieniono z 'hidden' na 'visible' */
+  /* ZMIANA: Usuwamy odstępy między wierszami */
+  gap: 0; 
+  /* ZMIANA: Dodajemy obramowanie i zaokrąglenie do całej siatki */
+  border: 1px solid var(--border-strong);
+  border-radius: var(--glass-radius); /* Używamy zmiennej dla spójności */
+  overflow: hidden;
 }
+
 .status-box {
   padding: 40px;
   text-align: center;

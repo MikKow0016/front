@@ -1,22 +1,37 @@
-// src/components/MailItem.jsx
+// src/components/MailList.jsx
 import React from 'react';
-import './MailItem.css';
+import MailItem from './MailItem';
+import './MailList.css';
 
-function MailItem({ mail, onSelectMail }) {
-  const bodySnippet = mail.body ? mail.body.substring(0, 100) + (mail.body.length > 100 ? '...' : '') : '';
+function MailList({ mails, loading, onMailSelect, activeFolder }) {
+
+  const getMailListHeading = () => {
+    const folderNames = {
+      inbox: 'Odebrane', sent: 'Wysłane', drafts: 'Wersje robocze', trash: 'Kosz'
+    };
+    return folderNames[activeFolder] || 'Maile';
+  };
 
   return (
-    <div className="mail-item aurora-glass" onClick={() => onSelectMail(mail.id)}>
-      <div className="mail-item-content">
-        <div className="mail-header-line">
-          <h3 className="mail-subject">{mail.subject}</h3>
-          <p className="mail-sender">{mail.sender}</p>
-          <p className="mail-date">{mail.date}</p>
+    // ZMIANA: Usunęliśmy klasy 'aurora-glass' i 'mail-list-card', 
+    // zastępując je prostą klasą 'mail-list-container'.
+    <div className="mail-list-container">
+      <h2 className="mail-list-heading">{getMailListHeading()}</h2>
+      
+      {loading ? (
+        <div className="status-box"><p>Ładowanie maili...</p></div>
+      ) : mails.length > 0 ? (
+        // Nazwa 'mails-grid' pozostaje, ponieważ nadal używamy siatki do układu.
+        <div className="mails-grid"> 
+          {mails.map((mail) => (
+            <MailItem key={mail.id} mail={mail} onSelectMail={onMailSelect} />
+          ))}
         </div>
-        <p className="mail-body">{bodySnippet}</p>
-      </div>
+      ) : (
+        <div className="status-box"><p>Brak maili do wyświetlenia.</p></div>
+      )}
     </div>
   );
 }
 
-export default MailItem;
+export default MailList;

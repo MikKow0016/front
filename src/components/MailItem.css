@@ -1,37 +1,45 @@
 /* src/components/MailItem.css */
 .mail-item {
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border-radius: var(--glass-radius);
-  border: 1px solid var(--border-strong);
-  box-shadow: 
-    inset 0 0 0 1px var(--border-strong-inset),
-    var(--shadow);
+  /* ZMIANA: Usunięcie wszystkich stylów "karty" */
+  background: transparent;
 
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  /* ZMIANA: Dodajemy linię oddzielającą na dole każdego wiersza */
+  border-bottom: 1px solid var(--border-strong);
+
+  transition: background-color 0.2s ease; /* Prostsza animacja */
   cursor: pointer;
-  will-change: transform;
-  overflow: hidden;
+  will-change: background-color;
+}
+
+/* ZMIANA: Usuwamy border z ostatniego elementu na liście */
+.mails-grid > .mail-item:last-child {
+  border-bottom: none;
 }
 
 .mail-item:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  /* ZMIANA: Prosty efekt podświetlenia tła, jak w Gmailu */
+  background-color: rgba(0, 0, 0, 0.04);
+  /* Usunięto transform i box-shadow */
 }
-.mail-item .glass-card-content {
-  /* ZMIANA: Znacząco zwiększamy padding do '28px 32px' */
-  padding: 28px 32px;
+
+body.dark-theme .mail-item:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ZMIANA: Padding został przeniesiony tutaj i dostosowany do układu wierszowego */
+.mail-item-content {
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 2;
 }
+
 .mail-header-line {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 8px; /* Lekko zwiększono dla lepszej proporcji */
+  margin-bottom: 6px;
   white-space: nowrap;
 }
 .mail-subject {
