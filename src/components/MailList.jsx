@@ -1,10 +1,11 @@
 // src/components/MailList.jsx
-import React, { useState } from 'react';
+import React from 'react'; // Usunięto 'useState', ponieważ nie jest już potrzebny
 import MailItem from './MailItem';
 import './MailList.css';
 
 function MailList({ mails, loading, onMailSelect, activeFolder }) {
-  const [inboxViewMode, setInboxViewMode] = useState('standard');
+  // Usunięto stan 'inboxViewMode', który nie jest już używany
+  // const [inboxViewMode, setInboxViewMode] = useState('standard');
 
   const getMailListHeading = () => {
     const folderNames = {
@@ -16,12 +17,7 @@ function MailList({ mails, loading, onMailSelect, activeFolder }) {
   return (
     <div className="mail-list-card aurora-glass">
       <div className="mail-list-content">
-        {activeFolder === 'inbox' && (
-          <div className="main-buttons-container">
-            <button className={`main-button ${inboxViewMode === 'standard' ? 'active' : ''}`} onClick={() => setInboxViewMode('standard')}>Główna skrzynka</button>
-            <button className={`main-button ${inboxViewMode === 'ai_sorted' ? 'active' : ''}`} onClick={() => setInboxViewMode('ai_sorted')}>AI Sortowane</button>
-          </div>
-        )}
+        {/* Usunięto cały blok z przyciskami 'Główna skrzynka' i 'AI Sortowane' */}
         <h2 className="mail-list-heading">{getMailListHeading()}</h2>
         {loading ? (
           <div className="status-box"><p>Ładowanie maili...</p></div>

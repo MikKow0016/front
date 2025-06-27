@@ -12,9 +12,13 @@
   --text-tertiary: #718096;
   --font-sans: 'Inter', sans-serif;
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  --glass-bg: rgba(255, 255, 255, 0.15);
-  --border-strong: rgba(255, 255, 255, 0.5);
-  --border-strong-inset: rgba(255, 255, 255, 0.8);
+
+  /* NOWOŚĆ: Zmienne do efektu rozmytego szkła */
+  --glass-bg: rgba(255, 255, 255, 0.35); /* Zwiększona przezroczystość tła karty */
+  --glass-blur: 20px; /* Siła rozmycia */
+  --glass-radius: 20px; /* Promień zaokrąglenia rogów */
+  --border-strong: rgba(255, 255, 255, 0.6);
+  --border-strong-inset: rgba(255, 255, 255, 0.9);
 }
 
 body.dark-theme {
@@ -26,7 +30,11 @@ body.dark-theme {
   --text-secondary: #9ca3af;
   --text-tertiary: #6b7280;
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  --glass-bg: rgba(31, 41, 55, 0.25);
+
+  /* NOWOŚĆ: Zmienne do efektu szkła w motywie ciemnym */
+  --glass-bg: rgba(31, 41, 55, 0.4); /* Półprzezroczyste tło dla ciemnej karty */
+  --glass-blur: 25px; /* Siła rozmycia */
+  --glass-radius: 20px;
   --border-strong: rgba(255, 255, 255, 0.1);
   --border-strong-inset: rgba(255, 255, 255, 0.2);
 }
@@ -42,7 +50,6 @@ body {
   line-height: 1.6;
   font-weight: 500;
   color: var(--text-primary);
-  /* POPRAWKA: Przywracamy tło, aby zapewnić widoczność aplikacji */
   background-color: var(--bg-color);
   font-synthesis: none;
   text-rendering: optimizeLegibility;

@@ -5,10 +5,6 @@
   min-height: 100vh;
   width: 100%;
   padding-top: 64px;
-  
-  /* POPRAWKA: Tworzymy nowy kontekst stosu, aby z-index działał poprawnie */
-  position: relative;
-  isolation: isolate;
 }
 
 .app-header {
@@ -50,6 +46,7 @@ body.dark-theme .app-header {
 .app-content {
   width: 100%;
   padding: 0;
+  z-index: 1;
 }
 
 @keyframes fadeInUp {
@@ -70,17 +67,21 @@ body.dark-theme .app-header {
   animation: fadeInUp 0.5s ease-in-out forwards;
 }
 
+/* POPRAWKA: Zastosowanie efektu rozmycia tła */
 .glass-card {
+  /* Ustawiamy półprzezroczyste tło z naszej nowej zmiennej */
   background: var(--glass-bg);
+  /* Stosujemy filtr rozmycia tła */
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
+  /* Używamy zmiennej do zaokrąglenia rogów */
   border-radius: var(--glass-radius);
   
-  border: 2px solid var(--border-strong);
+  border: 1px solid var(--border-strong); /* Cieńszy border dla subtelniejszego efektu */
   box-shadow: 
     inset 0 0 0 1px var(--border-strong-inset),
     var(--shadow);
-
+  
   position: relative;
   overflow: hidden;
   will-change: transform, opacity;
