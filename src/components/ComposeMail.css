@@ -1,6 +1,4 @@
 /* src/components/ComposeMail.css */
-
-/* --- NOWA ANIMACJA --- */
 @keyframes slideInFromBottom {
   from {
     opacity: 0;
@@ -13,34 +11,36 @@
 }
 
 .compose-mail-card {
+  /* ZMIANA: Kluczowe style pozycjonowania */
   position: fixed;
   bottom: 24px;
   right: 24px;
   z-index: 1000;
+  
   width: 90%;
   max-width: 650px;
   height: 75vh;
   max-height: 600px;
   display: flex;
   flex-direction: column;
-  /* Zastosowanie animacji */
   animation: slideInFromBottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-.compose-mail-card .glass-card-content {
+.compose-content-wrapper {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  overflow: hidden; 
+  overflow: hidden;
 }
+
 .compose-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
-  border-bottom: 1px solid var(--glass-border-color);
+  border-bottom: 1px solid var(--glass-border);
   flex-shrink: 0;
 }
 .compose-title {
@@ -73,7 +73,7 @@
 .compose-input-group {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--glass-border-color);
+  border-bottom: 1px solid var(--glass-border);
 }
 .compose-input-group label {
   font-size: 0.9em;
@@ -113,7 +113,7 @@
 }
 .compose-actions {
   padding-top: 16px;
-  border-top: 1px solid var(--glass-border-color);
+  border-top: 1px solid var(--glass-border);
   display: flex;
   justify-content: flex-end;
 }

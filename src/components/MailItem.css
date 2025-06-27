@@ -1,32 +1,24 @@
 /* src/components/MailItem.css */
 .mail-item {
-  /* ZMIANA: Usunięcie wszystkich stylów "karty" */
   background: transparent;
-
-  /* ZMIANA: Dodajemy linię oddzielającą na dole każdego wiersza */
   border-bottom: 1px solid var(--border-strong);
-
-  transition: background-color 0.2s ease; /* Prostsza animacja */
+  transition: background-color 0.2s ease;
   cursor: pointer;
   will-change: background-color;
 }
 
-/* ZMIANA: Usuwamy border z ostatniego elementu na liście */
 .mails-grid > .mail-item:last-child {
   border-bottom: none;
 }
 
 .mail-item:hover {
-  /* ZMIANA: Prosty efekt podświetlenia tła, jak w Gmailu */
   background-color: rgba(0, 0, 0, 0.04);
-  /* Usunięto transform i box-shadow */
 }
 
 body.dark-theme .mail-item:hover {
   background-color: rgba(255, 255, 255, 0.06);
 }
 
-/* ZMIANA: Padding został przeniesiony tutaj i dostosowany do układu wierszowego */
 .mail-item-content {
   padding: 20px 24px;
   display: flex;

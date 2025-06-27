@@ -1,4 +1,6 @@
 /* src/App.css */
+/* USUNIĘTO: Usunięto całą regułę dla .background-layer */
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -11,20 +13,16 @@
   height: 64px;
   flex-shrink: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: var(--glass-border);
+  box-shadow: var(--glass-shadow);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-body.dark-theme .app-header {
-  background: rgba(13, 17, 23, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .app-header-content {
@@ -46,7 +44,6 @@ body.dark-theme .app-header {
 .app-content {
   width: 100%;
   padding: 0;
-  z-index: 1;
 }
 
 @keyframes fadeInUp {
@@ -67,30 +64,45 @@ body.dark-theme .app-header {
   animation: fadeInUp 0.5s ease-in-out forwards;
 }
 
-/* POPRAWKA: Zastosowanie efektu rozmycia tła */
 .glass-card {
-  /* Ustawiamy półprzezroczyste tło z naszej nowej zmiennej */
   background: var(--glass-bg);
-  /* Stosujemy filtr rozmycia tła */
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  /* Używamy zmiennej do zaokrąglenia rogów */
   border-radius: var(--glass-radius);
-  
-  border: 1px solid var(--border-strong); /* Cieńszy border dla subtelniejszego efektu */
-  box-shadow: 
-    inset 0 0 0 1px var(--border-strong-inset),
-    var(--shadow);
-  
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-glow);
   position: relative;
   overflow: hidden;
-  will-change: transform, opacity;
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.glass-card::before,
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--glass-highlight-sharp),
+    transparent
+  );
+}
+
 .glass-card::after {
-  display: none;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--glass-highlight-sharp),
+    transparent
+  );
 }
 
 .sidebar {
@@ -99,7 +111,6 @@ body.dark-theme .app-header {
   top: 88px;
   left: 24px;
   height: calc(100vh - 88px - 24px);
-  padding: 24px 16px;
   animation: fadeInUp 0.5s ease-in-out 0.1s forwards;
   opacity: 0;
 }

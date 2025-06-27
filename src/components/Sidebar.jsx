@@ -10,7 +10,8 @@ function Sidebar({ onComposeClick, activeFolder, onFolderChange }) {
   );
 
   return (
-    <aside className="sidebar aurora-glass">
+    // ZMIANA: Dodajemy klasę 'glass-card' do panelu bocznego.
+    <aside className="sidebar glass-card">
       <div className="sidebar-content">
         <button className="compose-button" onClick={onComposeClick}>
           <PenIcon />

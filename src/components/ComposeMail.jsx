@@ -10,8 +10,9 @@ function ComposeMail({ onClose }) {
   );
 
   return (
-    <div className="compose-mail-container">
-      <div className="compose-mail-card">
+    // ZMIANA: Usunęliśmy zewnętrzny kontener. Sama karta jest teraz głównym elementem.
+    <div className="compose-mail-card glass-card">
+      <div className="compose-content-wrapper">
         <header className="compose-header">
           <h3 className="compose-title">Nowa wiadomość</h3>
           <button className="compose-close-btn" onClick={onClose}>

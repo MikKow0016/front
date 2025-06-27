@@ -3,7 +3,6 @@
 
 :root {
   /* Paleta kolorów - MOTYW JASNY */
-  --bg-color: #f0f2f5;
   --primary-accent: #1e40af;
   --primary-accent-hover: #1d4ed8;
   --primary-accent-text: #ffffff;
@@ -11,32 +10,39 @@
   --text-secondary: #4a5568;
   --text-tertiary: #718096;
   --font-sans: 'Inter', sans-serif;
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --bg-color: #f0f2f5;
 
-  /* NOWOŚĆ: Zmienne do efektu rozmytego szkła */
-  --glass-bg: rgba(255, 255, 255, 0.35); /* Zwiększona przezroczystość tła karty */
-  --glass-blur: 20px; /* Siła rozmycia */
-  --glass-radius: 20px; /* Promień zaokrąglenia rogów */
-  --border-strong: rgba(255, 255, 255, 0.6);
-  --border-strong-inset: rgba(255, 255, 255, 0.9);
+  /* ZMIANA: Mocniejszy efekt Glassmorfizmu */
+  --glass-bg: rgba(255, 255, 255, 0.25); /* Mniejsza przezroczystość */
+  --glass-blur: 70px; /* Znacznie mocniejszy blur */
+  --glass-radius: 20px;
+  --glass-border: 1px solid rgba(255, 255, 255, 0.5);
+  --glass-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  --glass-glow: inset 0 0 20px 10px rgba(255, 255, 255, 0.5);
+  --glass-highlight-sharp: rgba(255, 255, 255, 0.8);
 }
 
 body.dark-theme {
-  --bg-color: #0d1117;
   --primary-accent: #3b82f6;
   --primary-accent-hover: #60a5fa;
   --primary-accent-text: #ffffff;
   --text-primary: #e5e7eb;
   --text-secondary: #9ca3af;
   --text-tertiary: #6b7280;
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --bg-color: #0d1117;
 
-  /* NOWOŚĆ: Zmienne do efektu szkła w motywie ciemnym */
-  --glass-bg: rgba(31, 41, 55, 0.4); /* Półprzezroczyste tło dla ciemnej karty */
-  --glass-blur: 25px; /* Siła rozmycia */
+  /* ZMIANA: Mocniejszy efekt Glassmorfizmu w motywie ciemnym */
+  --glass-bg: rgba(31, 41, 55, 0.25);
+  --glass-blur: 70px;
   --glass-radius: 20px;
-  --border-strong: rgba(255, 255, 255, 0.1);
-  --border-strong-inset: rgba(255, 255, 255, 0.2);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --glass-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --glass-glow: inset 0 0 20px 10px rgba(0, 0, 0, 0.25);
+  --glass-highlight-sharp: rgba(255, 255, 255, 0.2);
 }
 
 * {
@@ -50,6 +56,7 @@ body {
   line-height: 1.6;
   font-weight: 500;
   color: var(--text-primary);
+  /* ZMIANA: Powrót do jednolitego koloru tła */
   background-color: var(--bg-color);
   font-synthesis: none;
   text-rendering: optimizeLegibility;

@@ -52,34 +52,38 @@ function App() {
   const selectedMail = mails.find(mail => mail.id === selectedMailId);
   
   return (
-    <div className="app-container">
-      <header className="app-header">
-        <div className="app-header-content">
-          <h1 className="app-title">NeuraMail</h1>
-          <ThemeSwitcher theme={theme} onToggle={toggleTheme} />
+    // ZMIANA: Używamy Fragmentu (<>...</>), aby wyrenderować ComposeMail poza głównym divem.
+    <>
+      <div className="app-container">
+        <header className="app-header">
+          <div className="app-header-content">
+            <h1 className="app-title">NeuraMail</h1>
+            <ThemeSwitcher theme={theme} onToggle={toggleTheme} />
+          </div>
+        </header>
+        <div className="app-content">
+          <Sidebar 
+            onComposeClick={handleToggleCompose} 
+            onFolderChange={handleFolderChange} 
+            activeFolder={activeFolder}
+          />
+          <main className="main-content">
+            {selectedMailId ? (
+              <MailDetail mail={selectedMail} onBack={handleBackToList} />
+            ) : (
+              <MailList 
+                mails={mails}
+                loading={loading}
+                onMailSelect={handleSelectMail}
+                activeFolder={activeFolder}
+              />
+            )}
+          </main>
         </div>
-      </header>
-      <div className="app-content">
-        <Sidebar 
-          onComposeClick={handleToggleCompose} 
-          onFolderChange={handleFolderChange} 
-          activeFolder={activeFolder}
-        />
-        <main className="main-content">
-          {selectedMailId ? (
-            <MailDetail mail={selectedMail} onBack={handleBackToList} />
-          ) : (
-            <MailList 
-              mails={mails}
-              loading={loading}
-              onMailSelect={handleSelectMail}
-              activeFolder={activeFolder}
-            />
-          )}
-        </main>
       </div>
+      {/* Komponent jest teraz tutaj, na najwyższym poziomie, co gwarantuje poprawne pozycjonowanie. */}
       {isComposing && <ComposeMail onClose={handleToggleCompose} />}
-    </div>
+    </>
   );
 }
 

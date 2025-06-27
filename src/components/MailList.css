@@ -1,7 +1,6 @@
 /* src/components/MailList.css */
 .mail-list-card {
-  /* ZMIANA: Zapewniamy, że karta wypełnia przestrzeń i ma padding */
-  padding: 24px;
+  /* USUNIĘTO: padding: 24px; */
   display: flex;
   flex-direction: column;
 }
@@ -9,6 +8,8 @@
 .mail-list-card .mail-list-content {
   position: relative;
   z-index: 2;
+  /* NOWOŚĆ: Przeniesiono padding tutaj, aby poprawnie działał wewnątrz karty. */
+  padding: 24px; 
 }
 
 .mail-list-heading {
@@ -20,12 +21,7 @@
 
 .mails-grid {
   display: grid;
-  /* ZMIANA: Usuwamy odstępy między wierszami */
-  gap: 0; 
-  /* ZMIANA: Dodajemy obramowanie i zaokrąglenie do całej siatki */
-  border: 1px solid var(--border-strong);
-  border-radius: var(--glass-radius); /* Używamy zmiennej dla spójności */
-  overflow: hidden;
+  gap: 0;
 }
 
 .status-box {

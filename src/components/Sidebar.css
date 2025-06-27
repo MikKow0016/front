@@ -1,7 +1,9 @@
 /* src/components/Sidebar.css */
-.glass-card-content {
+.sidebar-content {
   position: relative;
   z-index: 2;
+  /* NOWOŚĆ: Dodajemy padding, aby zawartość nie dotykała krawędzi karty. */
+  padding: 24px 16px;
 }
 
 .compose-button {
